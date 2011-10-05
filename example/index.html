@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>ContentEditable Example</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+
+<div id="container" class="shadow corner">
+	<div class="wizzy_enable">
+		<a class="cebtn cebtn-enable" title="Enable">Enable Content Editing</a>
+	</div>
+	<ul id="wizzy_toolbar" class="wizzy_toolbar clearfix">
+		<li><a class="cebtn cebtn-grow" title="Grow">+</a></li>
+		<li><a class="cebtn cebtn-shrink" title="Shrink">-</a></li>
+		<li><a class="cebtn cebtn-bold" title="Bold">B</a></li>
+		<li><a class="cebtn cebtn-italic" title="Italic">I</a></li>
+	</ul>
+
+
+	<div id="CE_container" class="clearfix">
+		<p>
+		Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam malesuada diam id risus porta sed sollicitudin orci auctor. Pellentesque suscipit sollicitudin nibh, facilisis accumsan metus faucibus sit amet.
+		</p>
+		<p>
+		Pellentesque sagittis est sed mauris sodales ut consectetur est aliquam. Aenean quis sapien orci, sit amet accumsan ipsum. Vivamus fringilla dictum ultrices. Phasellus elit lorem, pretium vitae cursus vel, sollicitudin vel ante. Aenean at justo neque, sit amet malesuada sapien.
+		</p>
+	</div>
+</div>
+
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+<script src="../lib/rangy.js"></script>
+<script src="../lib/wizzy.js"></script>
+<script src="../lib/contenteditable.js"></script>
+
+<script>
+var editable;
+$('.cebtn-enable').mousedown(function() {
+	editable = CE({el: '#CE_container' });
+	$(this).parent().remove();
+	$("#wizzy_toolbar").show();
+	return false;
+});
+$('.cebtn-grow').mousedown(function() { editable.increaseFontSize(); return false; });
+$('.cebtn-shrink').mousedown(function() { editable.decreaseFontSize(); return false; });
+$('.cebtn-bold').mousedown(function() { editable.bold(); return false; });
+$('.cebtn-italic').mousedown(function() { editable.italicize(); return false; });
+</script>	
+</body>
+</html>

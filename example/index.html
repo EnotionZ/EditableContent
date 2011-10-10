@@ -25,6 +25,9 @@
 		<p>
 		EditableContent can turn any container into an editable content area. A range is created during each click event within a given container. A two pixel wide (and 'line-height' tall) element with a blinking gif as background is placed at that range. Every character keystroke is then recorded in a textarea, measured off-screen, and appended into the container as a text node at the same range.
 		</p>
+		<p>
+		Currently, EditableContent is developed on Google Chrome. Please use Chrome for maximum compatibility.
+		</p>
 	</div>
 </div>
 
@@ -35,18 +38,29 @@
 <script src="../lib/contenteditable.js"></script>
 
 <script>
-var editable;
+var
 
-$('.cebtn-enable').mousedown(function() {
-	editable = CE({el: '#CE_container' });
-	$(this).parent().remove();
-	$("#wizzy_toolbar").show();
+inst,
+$toolbar = $("#wizzy_toolbar");
+$enableButton = $('.cebtn-enable').data('editable', false);
+$enableButton.click(function() {
+	var dataEditable = $enableButton.data('editable');
+	if(dataEditable) {
+		$enableButton.html("Enable Content Editing");
+		inst.disable();
+	} else {
+		if(!inst) inst = CE({el: '#CE_container' });
+		inst.enable();
+		$enableButton.html("Disable Content Editing");
+	}
+	$enableButton.data('editable', !dataEditable);
+	$toolbar.toggleClass('active');
 	return false;
 });
-$('.cebtn-grow').mousedown(function() { editable.increaseFontSize(); return false; });
-$('.cebtn-shrink').mousedown(function() { editable.decreaseFontSize(); return false; });
-$('.cebtn-bold').mousedown(function() { editable.bold(); return false; });
-$('.cebtn-italic').mousedown(function() { editable.italicize(); return false; });
+$('.cebtn-grow').mousedown(function() { 	inst.exec("increaseFontSize"); return false; });
+$('.cebtn-shrink').mousedown(function() { 	inst.exec("decreaseFontSize"); return false; });
+$('.cebtn-bold').mousedown(function() { 	inst.exec("bold"); return false; });
+$('.cebtn-italic').mousedown(function() { 	inst.exec("italicize"); return false; });
 </script>	
 </body>
 </html>

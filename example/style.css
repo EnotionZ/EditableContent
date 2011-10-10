@@ -137,11 +137,8 @@ table {
   zoom: 1;
 }
 /* IE */
-html, body {
-  height: 100%;
-}
 body {
-  min-width: 1000px;
+  min-width: 900px;
   background-color: gray;
 }
 p {
@@ -166,11 +163,16 @@ p {
   border-radius: 5px;
 }
 .-ce-blinker {
+  position: relative;
+  display: inline;
+}
+.-ce-blinker:before {
+  content: "";
   position: absolute;
   width: 2px;
-  height: 20px;
-  left: -9999px;
-  top: -9999px;
+  height: 100%;
+  left: -1px;
+  top: 0;
   background: transparent url(data:image/gif;base64,R0lGODlhAQABAPAAAAAAAAAAACH5BAkyAAAAIf8LTkVUU0NBUEUyLjADAQAAACwAAAAAAQABAAACAkQBACH5BAgyAAAALAAAAAABAAEAAAICRAEAOw==);
 }
 .-ce {
@@ -219,9 +221,13 @@ p {
 }
 .cebtn-enable {
   display: inline-block;
+  width: 165px;
 }
 #wizzy_toolbar {
   display: none;
+}
+#wizzy_toolbar.active {
+  display: inline-block;
 }
 #CE_container {
   border: 1px solid #333;

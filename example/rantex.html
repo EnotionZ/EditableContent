@@ -34,10 +34,10 @@
 </div>
 
 
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
-<script src="../lib/rangy.js"></script>
-<script src="../lib/wizzy.js"></script>
-<script src="../lib/contenteditable.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script src="../lib/rantex.js"></script>
+<script src="../lib/rantex.traversal.js"></script>
+<script src="../lib/rtEditor.js"></script>
 
 <script>
 		function fixIERangeObject(range,win) { //Only for IE8 and below.
@@ -129,7 +129,7 @@ $enableButton.click(function() {
 		$enableButton.html("Enable Content Editing");
 		inst.disable();
 	} else {
-		if(!inst) inst = CE({el: '#CE_container' });
+		if(!inst) inst = rtEditor({el: '#CE_container' });
 		inst.enable();
 		$enableButton.html("Disable Content Editing");
 	}
@@ -143,6 +143,8 @@ $('.cebtn-bold').mousedown(      function() { inst.exec("bold"); return false; }
 $('.cebtn-italic').mousedown(    function() { inst.exec("italicize"); return false; });
 $('.cebtn-underline').mousedown( function() { inst.exec("underline"); return false; });
 $('.cebtn-strike').mousedown(    function() { inst.exec("linethrough"); return false; });
-</script>	<script type="text/javascript" src="https://getfirebug.com/firebug-lite-debug.js"></script>
+
+</script>
+<script type="text/javascript" src="https://getfirebug.com/firebug-lite-debug.js"></script>
 </body>
 </html>
